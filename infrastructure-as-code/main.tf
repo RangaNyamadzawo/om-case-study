@@ -1,5 +1,5 @@
 variable "file_keys" {
-    default = ["0", "1", "2", "3", "4"] 
+    default = ["0", "2", "3", "4"] 
 }
 
 resource "local_file" "foo" {

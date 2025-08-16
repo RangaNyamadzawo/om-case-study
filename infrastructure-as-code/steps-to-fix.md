@@ -22,3 +22,9 @@ Use terraform state mv (or moved blocks) to map existing count indexes to for_ea
     terraform state mv 'local_file.foo[2]' 'local_file.foo["2"]'
     terraform state mv 'local_file.foo[3]' 'local_file.foo["3"]'
     terraform state mv 'local_file.foo[4]' 'local_file.foo["4"]'
+
+# 3. step 3
+Finally, remove the “2nd” key and apply, only that one is destroyed; others are unchanged.
+    variable "file_keys" {
+        default = ["0", "2", "3", "4"] # dropped "1"
+    }
