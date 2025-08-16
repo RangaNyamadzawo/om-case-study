@@ -1,0 +1,32 @@
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: example-custom-action-only
+  title: Example with my:custom:action
+  description: Runs only a single custom action that writes a file.
+spec:
+  owner: team-example
+  type: service
+  parameters:
+    - title: Write a file
+      required:
+        - filename
+        - contents
+      properties:
+        filename:
+          type: string
+          description: Relative file path to create (e.g., notes/output.txt)
+        contents:
+          type: string
+          description: File contents
+  steps:
+    - id: writefile
+      name: Write File
+      action: my:custom:action
+      input:
+        filename: ${{ parameters.filename }}
+        contents: ${{ parameters.contents }}
+  output:
+    links:
+      - title: Scaffolder Task
+        url: ${{ steps['writefile'].output.writtenPath }}

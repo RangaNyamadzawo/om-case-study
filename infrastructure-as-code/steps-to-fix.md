@@ -1,7 +1,30 @@
-# Add steps/actions here:
+# Add steps/actions here:   
 
-1. step 1
+# 1. step 1
+ Convert from count to for_each using stable keys, then remove only the key representing the “2nd” item.
 
-2. step 2
+    variable "file_keys" {
+        default = ["0", "1", "2", "3", "4"] 
+    }
 
-3. etc
+    resource "local_file" "foo" {
+        for_each = toset(var.file_keys)
+
+        content  = "# Some content for file ${each.key}"
+        filename = "file${each.key}.txt"
+    }
+
+# 2. step 2
+Use terraform state mv (or moved blocks) to map existing count indexes to for_each keys so Terraform doesn’t recreate anything.
+
+    terraform state mv 'local_file.foo[0]' 'local_file.foo["0"]'
+    terraform state mv 'local_file.foo[1]' 'local_file.foo["1"]'
+    terraform state mv 'local_file.foo[2]' 'local_file.foo["2"]'
+    terraform state mv 'local_file.foo[3]' 'local_file.foo["3"]'
+    terraform state mv 'local_file.foo[4]' 'local_file.foo["4"]'
+
+# 3. step 3
+Finally, remove the “2nd” key and apply, only that one is destroyed; others are unchanged.
+    variable "file_keys" {
+        default = ["0", "2", "3", "4"] # dropped "1"
+    }
