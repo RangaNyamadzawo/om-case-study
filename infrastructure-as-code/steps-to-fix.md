@@ -14,3 +14,11 @@
         filename = "file${each.key}.txt"
     }
 
+# 2. step 2
+Use terraform state mv (or moved blocks) to map existing count indexes to for_each keys so Terraform doesn’t recreate anything.
+
+    terraform state mv 'local_file.foo[0]' 'local_file.foo["0"]'
+    terraform state mv 'local_file.foo[1]' 'local_file.foo["1"]'
+    terraform state mv 'local_file.foo[2]' 'local_file.foo["2"]'
+    terraform state mv 'local_file.foo[3]' 'local_file.foo["3"]'
+    terraform state mv 'local_file.foo[4]' 'local_file.foo["4"]'

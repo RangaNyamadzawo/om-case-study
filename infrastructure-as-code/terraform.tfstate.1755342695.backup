@@ -1,7 +1,7 @@
 {
   "version": 4,
   "terraform_version": "1.10.5",
-  "serial": 14,
+  "serial": 13,
   "lineage": "b9106c44-ca1e-7450-8ab2-6a5bf7314e5f",
   "outputs": {},
   "resources": [
@@ -124,7 +124,7 @@
           ]
         },
         {
-          "index_key": "4",
+          "index_key": 4,
           "schema_version": 0,
           "attributes": {
             "content": "# Some content for file 4",

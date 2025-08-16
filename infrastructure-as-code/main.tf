@@ -1,11 +1,10 @@
-
-
-variable "files" {
-  default = 5
+variable "file_keys" {
+    default = ["0", "1", "2", "3", "4"] 
 }
 
 resource "local_file" "foo" {
-  count    = var.files
-  content  = "# Some content for file ${count.index}"
-  filename = "file${count.index}.txt"
+    for_each = toset(var.file_keys)
+
+    content  = "# Some content for file ${each.key}"
+    filename = "file${each.key}.txt"
 }

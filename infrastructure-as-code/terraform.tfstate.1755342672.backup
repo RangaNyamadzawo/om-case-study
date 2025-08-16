@@ -1,7 +1,7 @@
 {
   "version": 4,
   "terraform_version": "1.10.5",
-  "serial": 14,
+  "serial": 9,
   "lineage": "b9106c44-ca1e-7450-8ab2-6a5bf7314e5f",
   "outputs": {},
   "resources": [
@@ -12,7 +12,7 @@
       "provider": "provider[\"registry.terraform.io/hashicorp/local\"]",
       "instances": [
         {
-          "index_key": "0",
+          "index_key": 0,
           "schema_version": 0,
           "attributes": {
             "content": "# Some content for file 0",
@@ -40,7 +40,7 @@
           ]
         },
         {
-          "index_key": "1",
+          "index_key": 1,
           "schema_version": 0,
           "attributes": {
             "content": "# Some content for file 1",
@@ -68,7 +68,7 @@
           ]
         },
         {
-          "index_key": "2",
+          "index_key": 2,
           "schema_version": 0,
           "attributes": {
             "content": "# Some content for file 2",
@@ -96,7 +96,7 @@
           ]
         },
         {
-          "index_key": "3",
+          "index_key": 3,
           "schema_version": 0,
           "attributes": {
             "content": "# Some content for file 3",
@@ -124,7 +124,7 @@
           ]
         },
         {
-          "index_key": "4",
+          "index_key": 4,
           "schema_version": 0,
           "attributes": {
             "content": "# Some content for file 4",
